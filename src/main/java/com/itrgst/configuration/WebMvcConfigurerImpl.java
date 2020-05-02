@@ -11,6 +11,7 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer{
 
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
+        //CORS(CROSS O)
         corsRegistry.addMapping("/**");
         WebMvcConfigurer.super.addCorsMappings(corsRegistry);
     }
