@@ -60,7 +60,7 @@ public class WebAppController {
         return ResponseEntity.ok(new JwtResponse(jwtToken));
     }
 
-    @GetMapping("authenticate/get/UserMaster/{username}")
+    @GetMapping("authenticate/login/get/UserMaster/{username}")
     public String getUserMaster(@PathVariable String username) {
         System.out.println("dfgdfgdf234");
          userMasterService.loadUserByUsername(username);
