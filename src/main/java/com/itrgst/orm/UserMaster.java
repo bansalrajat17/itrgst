@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.Builder;
 import lombok.Data;
 
+
 @Data
 @Builder
 @Entity

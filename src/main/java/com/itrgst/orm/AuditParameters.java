@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AuditParameters implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "CREATED_DATE", nullable = false, updatable = false)

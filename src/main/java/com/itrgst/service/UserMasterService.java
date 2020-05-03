@@ -20,9 +20,9 @@ public class UserMasterService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserMaster> optional = userMasterDao.findById(username);
-        UserMaster userMaster = new UserMaster();
+        UserMaster userMaster = null;
         if (optional.isPresent())
-            userMaster = optional.get();
+             userMaster = optional.get();
         return userMaster;
     }
 }
