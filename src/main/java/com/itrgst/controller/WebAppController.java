@@ -55,16 +55,16 @@ public class WebAppController {
 
         // VERIFYING USERNAME AND PASSWORD
         authenticateUPAT(userMaster.getUsername(), userMaster.getPassword());
+
         final String jwtToken = jwtTokenUtil
                 .generateToken(userMasterService.loadUserByUsername(userMaster.getUsername()));
         return ResponseEntity.ok(new JwtResponse(jwtToken));
     }
 
     @GetMapping("authenticate/login/get/UserMaster/{username}")
-    public String getUserMaster(@PathVariable String username) {
-        System.out.println("dfgdfgdf234");
-         userMasterService.loadUserByUsername(username);
-         return "rtyryio";
+    public UserMaster getUserMaster(@PathVariable String username) {
+        UserDetails userDetails = userMasterService.loadUserByUsername(username);
+        return UserMaster.builder().username(userDetails.getUsername()).password(userDetails.getPassword()).build();
     }
 
     @PostMapping("save/RequestQueue")
