@@ -1,11 +1,21 @@
 package com.itrgst.orm;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.itrgst.orm.AuditParameters;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import lombok.Data;
 
@@ -13,7 +23,7 @@ import lombok.Data;
 @Entity
 @Table(name = "SERVICE_SITE")
 public class ServiceSite extends AuditParameters {
-	
+
 	@Id
 	@Column(name = "SERVICE_ID")
 	private String serviceId;
@@ -27,13 +37,22 @@ public class ServiceSite extends AuditParameters {
 	@Column(name = "SERVICE_INTRO")
 	private String serviceIntro;
 
-	@Column(name = "ELIGIBILITY")
-	private String eligibility;
+	@JsonManagedReference
+	@Fetch(FetchMode.JOIN)
+	@ManyToMany
+	@JoinTable(name = "SS_ELIGIBILITY", joinColumns = @JoinColumn(name = "SERVICE_ID"), inverseJoinColumns = @JoinColumn(name = "ELIGIBILITY_ID"))
+	private List<SEligibility> sEligibilityList;
 
-	@Column(name="TURNOVER_LIMIT")
-	private String turnoverLimit;
+	@JsonManagedReference
+	//@Fetch(FetchMode.JOIN)
+	@ManyToMany
+	@JoinTable(name = "SS_DOC_REQ", joinColumns = @JoinColumn(name = "SERVICE_ID"), inverseJoinColumns = @JoinColumn(name = "DOCUMENT_ID"))
+	private List<SDocumentRequired> sDocumentRequiredList;
 
-	@Column(name = "PENALTY")
-	private String penalty;
+	@JsonManagedReference
+	//@Fetch(FetchMode.JOIN)
+	@ManyToMany
+	@JoinTable(name = "SS_BENEFIT", joinColumns = @JoinColumn(name = "SERVICE_ID"), inverseJoinColumns = @JoinColumn(name = "BENEFIT_ID"))
+	private List<SBenefit> sBenefitList;
 
 }

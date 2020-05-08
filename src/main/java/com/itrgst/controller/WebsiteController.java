@@ -1,7 +1,12 @@
 package com.itrgst.controller;
 
+import java.util.List;
+
 import com.itrgst.orm.ContentSite;
+import com.itrgst.orm.SEligibility;
 import com.itrgst.orm.ServiceSite;
+import com.itrgst.orm.SEligibility;
+import com.itrgst.orm.SsGstType;
 import com.itrgst.service.WebsiteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +25,16 @@ public class WebsiteController {
 	@GetMapping("get/ServiceSite/{serviceId}")
 	public ServiceSite getServiceSite(@PathVariable String serviceId) {
 		return websiteService.getServiceSite(serviceId);
+	}
+
+	@GetMapping("get/SsGstTypeList")
+	public List<SsGstType> getSsGstTypeList(){
+		return websiteService.getSsGstTypeList();
+	}
+
+	@GetMapping("get/SEligibilityList/ServiceId/{serviceId}")
+	public List<SEligibility> getSsEligibilityListByServiceId(@PathVariable String serviceId){
+		return websiteService.getSEligibilityListByServiceId(serviceId);
 	}
 
 	@GetMapping("get/ContentSite/{contentNo}")
