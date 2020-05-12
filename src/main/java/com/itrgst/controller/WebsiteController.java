@@ -7,13 +7,16 @@ import com.itrgst.orm.SEligibility;
 import com.itrgst.orm.ServiceSite;
 import com.itrgst.orm.SEligibility;
 import com.itrgst.orm.SsGstType;
+import com.itrgst.orm.TestimonialSite;
 import com.itrgst.service.WebsiteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -22,24 +25,34 @@ public class WebsiteController {
 	@Autowired
 	private WebsiteService websiteService;
 
-	@GetMapping("get/ServiceSite/{serviceId}")
-	public ServiceSite getServiceSite(@PathVariable String serviceId) {
-		return websiteService.getServiceSite(serviceId);
+	@GetMapping("get/ServiceSite/no/{no}")
+	public ServiceSite getServiceSiteByNo(@PathVariable Long no) {
+		return websiteService.getServiceSiteByNo(no);
 	}
 
 	@GetMapping("get/SsGstTypeList")
-	public List<SsGstType> getSsGstTypeList(){
+	public List<SsGstType> getSsGstTypeList() {
 		return websiteService.getSsGstTypeList();
 	}
 
-	@GetMapping("get/SEligibilityList/ServiceId/{serviceId}")
-	public List<SEligibility> getSsEligibilityListByServiceId(@PathVariable String serviceId){
-		return websiteService.getSEligibilityListByServiceId(serviceId);
+	@GetMapping("get/SEligibilityList/serviceNo/{serviceNo}")
+	public List<SEligibility> getSsEligibilityListByServiceNo(@PathVariable Long serviceNo) {
+		return websiteService.getSEligibilityListByServiceSiteListNo(serviceNo);
 	}
 
-	@GetMapping("get/ContentSite/{contentNo}")
-	public ContentSite getContentSite(@PathVariable String contentNo){
-		return websiteService.getContentSite(contentNo);
+	@GetMapping("get/ContentSite/no/{no}")
+	public ContentSite getContentSiteByNo(@PathVariable Long no) {
+		return websiteService.getContentSiteByNo(no);
+	}
+
+	@GetMapping("get/TestimonialSiteList")
+	public List<TestimonialSite> getAllTestimonialSiteList() {
+		return websiteService.getAllTestimonialSiteList();
+	}
+
+	@PostMapping("get/ContentSiteList/nos")
+	public List<ContentSite> getContentSiteListByNos(@RequestParam List<Long> nos) {
+		return (List<ContentSite>) websiteService.getContentSiteListByNos(nos);
 	}
 
 }

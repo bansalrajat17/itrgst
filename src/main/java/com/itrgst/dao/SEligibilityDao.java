@@ -7,5 +7,5 @@ import com.itrgst.orm.SEligibility;
 import org.springframework.data.repository.CrudRepository;
 
 public interface SEligibilityDao extends CrudRepository<SEligibility, Long> {
-    List<SEligibility> findByServiceSiteListServiceId(String serviceId);
+    List<SEligibility> findByServiceSiteListNo(Long serviceNo);
 }

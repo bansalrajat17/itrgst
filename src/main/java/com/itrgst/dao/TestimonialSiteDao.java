@@ -1,11 +1,11 @@
 package com.itrgst.dao;
 
+import com.itrgst.orm.TestimonialSite;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.itrgst.orm.ServiceSite;
-
 @Repository
-public interface ServiceSiteDao extends CrudRepository<ServiceSite, Long> {
+public interface TestimonialSiteDao extends CrudRepository<TestimonialSite,Long>{
 
 }
