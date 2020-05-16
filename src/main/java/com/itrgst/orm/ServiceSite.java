@@ -1,11 +1,13 @@
 package com.itrgst.orm;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -20,11 +22,8 @@ import lombok.Data;
 @Table(name = "SERVICE_SITE")
 public class ServiceSite extends Site {
 
-	@JsonManagedReference
-	@Fetch(FetchMode.JOIN)
-	@ManyToMany
-	@JoinTable(name = "SS_ELIGIBILITY", joinColumns = @JoinColumn(name = "ELIGIBILITY_NO"), inverseJoinColumns = @JoinColumn(name = "NO"))
-	private List<SEligibility> sEligibilityList;
+	@OneToMany(mappedBy = "serviceSite")
+	private List<SsEligibility> ssEligibilitySet;
 
 	@JsonManagedReference
 	//@Fetch(FetchMode.JOIN)

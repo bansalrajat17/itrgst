@@ -1,6 +1,5 @@
 package com.itrgst.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itrgst.orm.RequestQueue;
 import com.itrgst.orm.UserMaster;
 import com.itrgst.response.JwtResponse;

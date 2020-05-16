@@ -1,11 +1,11 @@
 package com.itrgst.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import com.itrgst.orm.ContentSite;
 import com.itrgst.orm.SEligibility;
 import com.itrgst.orm.ServiceSite;
-import com.itrgst.orm.SEligibility;
 import com.itrgst.orm.SsGstType;
 import com.itrgst.orm.TestimonialSite;
 import com.itrgst.service.WebsiteService;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,7 +37,7 @@ public class WebsiteController {
 	}
 
 	@GetMapping("get/SEligibilityList/serviceNo/{serviceNo}")
-	public List<SEligibility> getSsEligibilityListByServiceNo(@PathVariable Long serviceNo) {
+	public List<SEligibility> getSEligibilityListByServiceNo(@PathVariable Long serviceNo) {
 		return websiteService.getSEligibilityListByServiceSiteListNo(serviceNo);
 	}
 
@@ -51,8 +52,8 @@ public class WebsiteController {
 	}
 
 	@PostMapping("get/ContentSiteList/nos")
-	public List<ContentSite> getContentSiteListByNos(@RequestParam List<Long> nos) {
-		return (List<ContentSite>) websiteService.getContentSiteListByNos(nos);
+	public List<ContentSite> getContentSiteListByNos(@RequestBody List<Long> nos) {
+		return (List<ContentSite>) websiteService.getContentSiteListByNos(nos);	
 	}
 
 }
