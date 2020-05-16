@@ -27,7 +27,10 @@ public class SEligibility extends AuditParameters {
 	private Long eligibilityId;
 
 	@Column(name = "ELIGIBILITY_DESC")
-    private String eligibilityDesc;
+	private String eligibilityDesc;
+	
+	@Column(name = "ICON")
+	private String icon;
 	
 	@JsonBackReference
     @ManyToMany
