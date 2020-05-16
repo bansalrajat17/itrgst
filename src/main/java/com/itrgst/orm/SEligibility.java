@@ -1,40 +1,28 @@
 package com.itrgst.orm;
 
-import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.itrgst.orm.AuditParameters;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import lombok.Data;
-
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "S_ELIGIBILITY")
-public class SEligibility extends AuditParameters {
-	
-	@Id
-	@Column(name = "ELIGIBILITY_ID")
-	private Long eligibilityId;
+public class SEligibility extends Site {
 
-	@Column(name = "ELIGIBILITY_DESC")
-	private String eligibilityDesc;
-	
-	@Column(name = "ICON")
-	private String icon;
-	
-	@JsonBackReference
-    @ManyToMany
-	@JoinTable(name = "SS_ELIGIBILITY", joinColumns = @JoinColumn(name = "ELIGIBILITY_ID"), inverseJoinColumns = @JoinColumn(name = "SERVICE_ID"))
-	private List<ServiceSite> serviceSiteList;
+	@JsonIgnore
+	@OneToMany(mappedBy = "sEligibility")
+	private Set<SsEligibility> ssEligibilitySet;
 
 }
