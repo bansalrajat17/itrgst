@@ -27,5 +27,8 @@ public class STestimonial extends AuditParameters {
 
     @Column(name="LOGO")
     private String logo;
+
+    @Column(name="RATING")
+    private Long rating;
     
 }

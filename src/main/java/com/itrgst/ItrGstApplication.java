@@ -12,5 +12,4 @@ public class ItrGstApplication {
 	}
 }
 
-//ssh -i "/home/rajat/Downloads/ubuntu_insta.pem" ubuntu@ec2-3-134-109-153.us-east-2.compute.amazonaws.com
 
