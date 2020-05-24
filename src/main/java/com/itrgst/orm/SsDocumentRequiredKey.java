@@ -14,6 +14,6 @@ public class SsDocumentRequiredKey implements Serializable{
     @Column(name = "SERVICE_NO")
     private Long serviceNo;
 
-    @Column(name = "DOC_NO")
-    private Long docNo;
+    @Column(name = "DOCUMENT_NO")
+    private Long documentNo;
 }

@@ -21,14 +21,14 @@ import lombok.Setter;
 @Table(name = "SERVICE_SITE")
 public class ServiceSite extends Site {
 
-	@OneToMany(mappedBy = "serviceSite", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "serviceSite")
 	private Set<SsEligibility> ssEligibilitySet;
 
-	/*
-	@OneToMany(mappedBy = "serviceSite",fetch = FetchType.EAGER)
+	
+	@OneToMany(mappedBy = "serviceSite",fetch=FetchType.EAGER)
 	private Set<SsDocumentRequired> ssDocumentRequiredSet;
 
-	
+	/*
 
 	@OneToMany(mappedBy = "serviceSite",fetch = FetchType.EAGER)
 	private Set<SsBenefit> ssBenefitSet;*/

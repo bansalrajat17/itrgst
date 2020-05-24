@@ -39,7 +39,7 @@ public class WebsiteService {
 	}
 
 	public ServiceSite getServiceSiteByNo(Long no) {
-		return serviceSiteDao.findById(no).get();
+		return serviceSiteDao.findChildById(no).get();
 	}
 
 	public ContentSite getContentSiteByNo(Long no) {

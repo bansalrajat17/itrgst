@@ -20,9 +20,9 @@ public class SsDocumentRequired extends AuditParameters {
     @EmbeddedId
     private SsDocumentRequiredKey ssDocumentRequiredKey;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @MapsId("DOC_NO")
-    @JoinColumn(name = "DOC_NO")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("DOCUMENT_NO")
+    @JoinColumn(name = "DOCUMENT_NO")
     private SDocumentRequired sDocumentRequired;
 
     @JsonIgnore
