@@ -1,7 +1,9 @@
 package com.itrgst.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.itrgst.dao.ContentSiteDao;
 import com.itrgst.dao.ServiceSiteDao;
@@ -10,6 +12,7 @@ import com.itrgst.dao.SsGstTypeDao;
 import com.itrgst.dao.STestimonialDao;
 import com.itrgst.orm.ContentSite;
 import com.itrgst.orm.ServiceSite;
+import com.itrgst.orm.SsDocumentRequired;
 import com.itrgst.orm.SEligibility;
 import com.itrgst.orm.SsGstType;
 import com.itrgst.orm.STestimonial;
@@ -39,7 +42,15 @@ public class WebsiteService {
 	}
 
 	public ServiceSite getServiceSiteByNo(Long no) {
-		return serviceSiteDao.findChildById(no).get();
+		ServiceSite serviceSite = serviceSiteDao.findById(no).get();
+		//List<SsDocumentRequired> documentRequiredSet = serviceSite.getSsDocumentRequiredList();
+		Set<SsDocumentRequired> documentRequiredSet = new HashSet<>(serviceSite.getSsDocumentRequiredList());
+	//	documentRequiredSet.stream().collect(Collectors.toSet());
+		//.stream().collect(Collectors.toSet());
+		//findChildById(no).get();
+	//	serviceSite.setSsDocumentRequiredList(serviceSite.getSsDocumentRequiredList().stream()
+	//			.collect(Collectors.toSet()).stream().collect(Collectors.toList()));
+		return serviceSite;
 	}
 
 	public ContentSite getContentSiteByNo(Long no) {

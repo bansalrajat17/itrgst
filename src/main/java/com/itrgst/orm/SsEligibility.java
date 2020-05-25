@@ -11,6 +11,9 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import lombok.Data;
 
 @Data
@@ -21,7 +24,8 @@ public class SsEligibility extends AuditParameters{
     @EmbeddedId
     private SsEligibilityKey ssEligibilityKey;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
+    @Fetch(FetchMode.JOIN)
     @MapsId("ELIGIBILITY_NO")
     @JoinColumn(name = "ELIGIBILITY_NO")
     private SEligibility sEligibility;

@@ -10,6 +10,9 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import lombok.Data;
 
 @Data
@@ -20,7 +23,8 @@ public class SsDocumentRequired extends AuditParameters {
     @EmbeddedId
     private SsDocumentRequiredKey ssDocumentRequiredKey;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @Fetch(FetchMode.JOIN)
     @MapsId("DOCUMENT_NO")
     @JoinColumn(name = "DOCUMENT_NO")
     private SDocumentRequired sDocumentRequired;

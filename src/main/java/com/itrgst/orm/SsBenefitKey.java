@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 @Embeddable
 public class SsBenefitKey implements Serializable{
-    
+
     @Column(name = "SERVICE_NO")
     private Long serviceNo;
 

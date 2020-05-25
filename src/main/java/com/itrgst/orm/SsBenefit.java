@@ -10,6 +10,9 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import lombok.Data;
 
 @Data
@@ -20,12 +23,13 @@ public class SsBenefit extends AuditParameters{
     @EmbeddedId
     private SsBenefitKey ssBenefitKey;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @Fetch(FetchMode.JOIN)
     @MapsId("BENEFIT_NO")
     @JoinColumn(name = "BENEFIT_NO")
     private SBenefit sBenefit;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("SERVICE_NO")
     @JoinColumn(name = "SERVICE_NO")
