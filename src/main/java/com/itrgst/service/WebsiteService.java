@@ -42,15 +42,7 @@ public class WebsiteService {
 	}
 
 	public ServiceSite getServiceSiteByNo(Long no) {
-		ServiceSite serviceSite = serviceSiteDao.findById(no).get();
-		//List<SsDocumentRequired> documentRequiredSet = serviceSite.getSsDocumentRequiredList();
-		Set<SsDocumentRequired> documentRequiredSet = new HashSet<>(serviceSite.getSsDocumentRequiredList());
-	//	documentRequiredSet.stream().collect(Collectors.toSet());
-		//.stream().collect(Collectors.toSet());
-		//findChildById(no).get();
-	//	serviceSite.setSsDocumentRequiredList(serviceSite.getSsDocumentRequiredList().stream()
-	//			.collect(Collectors.toSet()).stream().collect(Collectors.toList()));
-		return serviceSite;
+		return serviceSiteDao.findById(no).get();
 	}
 
 	public ContentSite getContentSiteByNo(Long no) {
