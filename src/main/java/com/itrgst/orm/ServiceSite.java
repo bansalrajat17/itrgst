@@ -30,16 +30,13 @@ import lombok.Setter;
 @Table(name = "SERVICE_SITE")
 public class ServiceSite extends Site {
 
-	@OneToMany(mappedBy = "serviceSite",fetch = FetchType.EAGER)
-	@Fetch(FetchMode.JOIN)
-	private Set<SsEligibility> ssEligibilitySet = new HashSet<>();
+	@OneToMany(mappedBy = "serviceSite")
+	private List<SsEligibility> ssEligibilitList = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "serviceSite",fetch = FetchType.EAGER)
-	@Fetch(FetchMode.JOIN)
+	@OneToMany(mappedBy = "serviceSite")
 	private List<SsDocumentRequired> ssDocumentRequiredList = new ArrayList<>();
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "serviceSite")
-	private Set<SsBenefit> ssBenefitSet = new HashSet<>();
+	private List<SsBenefit> ssBenefitList = new ArrayList<>();
 
 }
