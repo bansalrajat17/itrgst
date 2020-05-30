@@ -31,7 +31,7 @@ import lombok.Setter;
 public class ServiceSite extends Site {
 
 	@OneToMany(mappedBy = "serviceSite")
-	private List<SsEligibility> ssEligibilitList = new ArrayList<>();
+	private List<SsEligibility> ssEligibilityList = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "serviceSite")
 	private List<SsDocumentRequired> ssDocumentRequiredList = new ArrayList<>();
