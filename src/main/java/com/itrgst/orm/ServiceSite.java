@@ -39,4 +39,7 @@ public class ServiceSite extends Site {
 	@OneToMany(mappedBy = "serviceSite")
 	private List<SsBenefit> ssBenefitList = new ArrayList<>();
 
+	@OneToMany(mappedBy = "serviceSite")
+	private List<SsPackage> ssPackageList = new ArrayList<>();
+
 }
