@@ -1,9 +1,6 @@
 package com.itrgst.service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.itrgst.dao.ContentSiteDao;
 import com.itrgst.dao.ServiceSiteDao;
@@ -12,7 +9,6 @@ import com.itrgst.dao.SsGstTypeDao;
 import com.itrgst.dao.STestimonialDao;
 import com.itrgst.orm.ContentSite;
 import com.itrgst.orm.ServiceSite;
-import com.itrgst.orm.SsDocumentRequired;
 import com.itrgst.orm.SEligibility;
 import com.itrgst.orm.SsGstType;
 import com.itrgst.orm.STestimonial;

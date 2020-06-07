@@ -1,5 +1,6 @@
 package com.itrgst.orm;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +23,6 @@ public class SBenefit extends Site {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "sBenefit")
-	private Set<SsBenefit> ssBenefitSet;
+	private Set<SsBenefit> ssBenefitSet = new HashSet<>();
 
 }

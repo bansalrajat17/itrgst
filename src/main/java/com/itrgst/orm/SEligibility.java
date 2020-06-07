@@ -1,5 +1,6 @@
 package com.itrgst.orm;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -23,6 +24,6 @@ public class SEligibility extends Site {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "sEligibility")
-	private Set<SsEligibility> ssEligibilitySet;
+	private Set<SsEligibility> ssEligibilitySet = new HashSet<>();
 
 }

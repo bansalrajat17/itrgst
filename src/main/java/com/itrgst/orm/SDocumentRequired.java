@@ -1,5 +1,6 @@
 package com.itrgst.orm;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -17,6 +18,6 @@ public class SDocumentRequired extends Site {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "sDocumentRequired")
-	private Set<SsDocumentRequired> ssDocumentRequiredSet;
+	private Set<SsDocumentRequired> ssDocumentRequiredSet = new HashSet<>();
 
 }

@@ -1,5 +1,6 @@
 package com.itrgst.orm;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class UserMaster extends AuditParameters implements UserDetails {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLES", joinColumns = @JoinColumn(name = "USERNAME"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
-    private List<RoleMaster> roleMasterList;
+    private List<RoleMaster> roleMasterList = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
