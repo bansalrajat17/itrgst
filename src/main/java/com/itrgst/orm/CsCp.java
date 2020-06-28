@@ -13,33 +13,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "PMPD_PACKAGE")
-public class PmpdPackage extends AuditParameters{
+@Table(name = "CS_CP")
+public class CsCp extends AuditParameters{
     
     @EmbeddedId
-    private PmpdPackageKey pmpdPackageKey;
-    
+    private CsCpKey csCpKey;
+
     @ManyToOne
     @Fetch(FetchMode.JOIN)
-    @MapsId("PM_NO")
-    @JoinColumn(name = "PM_NO")
-    private SPackageMaster sPackageMaster;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("PD_NO")
-    @JoinColumn(name = "PD_NO")
-    private SPackageDetail sPackageDetail;
+    @MapsId("CP_NO")
+    @JoinColumn(name = "CP_NO")
+    private ContentPoint contentPoint;
 
     @JsonIgnore
-    public SPackageDetail getsPackageDetail() {
-        return sPackageDetail;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("CS_NO")
+    @JoinColumn(name = "CS_NO")
+    private ContentSite contentSite;
+
 }

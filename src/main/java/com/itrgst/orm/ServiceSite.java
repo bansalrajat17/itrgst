@@ -43,4 +43,11 @@ public class ServiceSite extends Site {
 	@OneToMany(mappedBy = "serviceSite")
 	private List<SsPackage> ssPackageList = new ArrayList<>();
 
+	@OneToMany(mappedBy = "serviceSite")
+	private List<SsFaq> ssFaqList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "serviceSite")
+	private List<SsStc> ssStcList = new ArrayList<>();
+
+
 }

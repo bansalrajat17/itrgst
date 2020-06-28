@@ -1,9 +1,7 @@
 package com.itrgst.orm;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,8 +21,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "S_PACKAGE_DETAIL")
-public class SPackageDetail extends AuditParameters {
+@Table(name = "ATP_ANSWER_TABLE_POINT")
+public class AtpAnswerTablePoint extends AuditParameters {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,19 +30,10 @@ public class SPackageDetail extends AuditParameters {
     Long no;
 
 	@Column(name = "DESCRIPTION")
-	private String description;
-
-	@Column(name = "AMOUNT")
-	private Long amount;
-
-	@OneToMany(mappedBy = "sPackageDetail")
-	private List<PmpdPackage> pmpdPackageList = new ArrayList<>();
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "sPackageDetail")
-	private List<SsPackage> ssPackageList = new ArrayList<>();
-
-	@OneToMany(mappedBy = "sPackageDetail")
-	private List<PpHighlight> ppHighlightList = new ArrayList<>();
+    private String description;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "atpAnswerTablePoint")
+    private List<AthAatp> athAatpList = new ArrayList<>(); 
 
 }

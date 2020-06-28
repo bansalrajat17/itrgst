@@ -17,26 +17,21 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PP_HIGHLIGHT")
-public class PpHighlight extends AuditParameters{
-    
+@Table(name = "SS_STC")
+public class SsStc extends AuditParameters {
+
     @EmbeddedId
-    private PpHighlightKey ppHighlightKey;
+    private SsStcKey ssStcKey;
 
     @ManyToOne
     @Fetch(FetchMode.JOIN)
-    @MapsId("HIGHLIGHT_NO")
-    @JoinColumn(name = "HIGHLIGHT_NO")
-    private PHighlight pHighlight;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("PACKAGE_NO")
-    @JoinColumn(name = "PACKAGE_NO")
-    private SPackageDetail sPackageDetail;
+    @MapsId("STC_NO")
+    @JoinColumn(name = "STC_NO")
+    private STaxComputation sTaxComputation;
 
     @JsonIgnore
-    public SPackageDetail getsPackageDetail() {
-        return sPackageDetail;
-    }
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("SERVICE_NO")
+    @JoinColumn(name = "SERVICE_NO")
+    private ServiceSite serviceSite;
 }

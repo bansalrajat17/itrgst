@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,26 +18,27 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PP_HIGHLIGHT")
-public class PpHighlight extends AuditParameters{
-    
+@Table(name = "STC_HEADING")
+public class StcHeading extends AuditParameters {
+
     @EmbeddedId
-    private PpHighlightKey ppHighlightKey;
+    private StcHeadingKey stcHeadingKey;
+
+    @OneToOne
+    @Fetch(FetchMode.JOIN)
+    @MapsId("ATH_NO")
+    @JoinColumn(name = "ATH_NO")
+    private AnswerTableHeading answerTableHeading;
 
     @ManyToOne
     @Fetch(FetchMode.JOIN)
-    @MapsId("HIGHLIGHT_NO")
-    @JoinColumn(name = "HIGHLIGHT_NO")
-    private PHighlight pHighlight;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("PACKAGE_NO")
-    @JoinColumn(name = "PACKAGE_NO")
-    private SPackageDetail sPackageDetail;
+    @MapsId("STC_NO")
+    @JoinColumn(name = "STC_NO")
+    private STaxComputation sTaxComputation;
 
     @JsonIgnore
-    public SPackageDetail getsPackageDetail() {
-        return sPackageDetail;
+    public STaxComputation getsTaxComputation() {
+        return sTaxComputation;
     }
 
 }

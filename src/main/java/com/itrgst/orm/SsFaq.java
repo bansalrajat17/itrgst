@@ -3,9 +3,11 @@ package com.itrgst.orm;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,25 +23,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "PMPD_PACKAGE")
-public class PmpdPackage extends AuditParameters{
+@Table(name = "SS_FAQ")
+public class SsFaq extends AuditParameters {
     
     @EmbeddedId
-    private PmpdPackageKey pmpdPackageKey;
-    
-    @ManyToOne
-    @Fetch(FetchMode.JOIN)
-    @MapsId("PM_NO")
-    @JoinColumn(name = "PM_NO")
-    private SPackageMaster sPackageMaster;
+    private SsFaqKey ssFaqKey;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("PD_NO")
-    @JoinColumn(name = "PD_NO")
-    private SPackageDetail sPackageDetail;
+    @OneToOne
+    @Fetch(FetchMode.JOIN)
+    @MapsId("QUESTION_NO")
+    @JoinColumn(name = "QUESTION_NO")
+    private SQuestion sQuestion;
+
+    @OneToOne
+    @Fetch(FetchMode.JOIN)
+    @MapsId("ANSWER_NO")
+    @JoinColumn(name = "ANSWER_NO")
+    private SAnswer sAnswer;
 
     @JsonIgnore
-    public SPackageDetail getsPackageDetail() {
-        return sPackageDetail;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("SERVICE_NO")
+    @JoinColumn(name = "SERVICE_NO")
+    private ServiceSite serviceSite;
+
 }

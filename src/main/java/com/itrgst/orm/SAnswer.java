@@ -1,9 +1,7 @@
 package com.itrgst.orm;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,28 +22,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "S_PACKAGE_DETAIL")
-public class SPackageDetail extends AuditParameters {
+@Table(name = "S_ANSWER")
+public class SAnswer extends AuditParameters {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NO")
     Long no;
 
-	@Column(name = "DESCRIPTION")
-	private String description;
+	@Column(name = "ANSWER")
+    private String ANSWER;
+    
+    @JsonIgnore
+    @OneToOne(mappedBy = "sAnswer")
+    private SsFaq ssFaq;
 
-	@Column(name = "AMOUNT")
-	private Long amount;
-
-	@OneToMany(mappedBy = "sPackageDetail")
-	private List<PmpdPackage> pmpdPackageList = new ArrayList<>();
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "sPackageDetail")
-	private List<SsPackage> ssPackageList = new ArrayList<>();
-
-	@OneToMany(mappedBy = "sPackageDetail")
-	private List<PpHighlight> ppHighlightList = new ArrayList<>();
+    @OneToMany(mappedBy = "sAnswer")
+    private List<AnswerHeading> answerHeadingList = new ArrayList<>();
 
 }

@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,33 +14,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "PMPD_PACKAGE")
-public class PmpdPackage extends AuditParameters{
-    
+@Table(name = "ANSWER_HEADING")
+public class AnswerHeading extends AuditParameters{
+
     @EmbeddedId
-    private PmpdPackageKey pmpdPackageKey;
-    
-    @ManyToOne
+    private AnswerHeadingKey answerHeadingKey;
+
+    @OneToOne
     @Fetch(FetchMode.JOIN)
-    @MapsId("PM_NO")
-    @JoinColumn(name = "PM_NO")
-    private SPackageMaster sPackageMaster;
+    @MapsId("ATH_NO")
+    @JoinColumn(name = "ATH_NO")
+    private AnswerTableHeading answerTableHeading;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("PD_NO")
-    @JoinColumn(name = "PD_NO")
-    private SPackageDetail sPackageDetail;
+    @MapsId("ANSWER_NO")
+    @JoinColumn(name = "ANSWER_NO")
+    private SAnswer sAnswer;
 
     @JsonIgnore
-    public SPackageDetail getsPackageDetail() {
-        return sPackageDetail;
+    public SAnswer getsAnswer() {
+        return sAnswer;
     }
+
 }
